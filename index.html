@@ -67,6 +67,13 @@
         function DisplayTable(state) {
             document.getElementById('myTable').style.visibility = state;
         }
+        function calAverage() {
+            let n1 = Number.parseInt(document.getElementById('num1').value);
+            let n2 = Number.parseInt(document.getElementById('num2').value);
+            let n3 = Number.parseInt(document.getElementById('num3').value);
+            let avr = (n1 + n2 + n3) / 3;
+            document.getElementById('avr').innerHTML = "ค่าเฉลี่ย: " + avr;
+        }
     </script>
   </head>
   <body>
@@ -107,5 +114,12 @@
             <td>888</td>
         </tr>
     </table>
+    <div class="center">
+        number #1 <input type="number" id="num1"><br />
+        number #2 <input type="number" id="num2"><br />
+        number #3 <input type="number" id="num3"><br />
+        <button onclick="calAverage()">Submit</button>
+    </div>
+    <div class="center" id="avr"></div>
   </body>
 </html>
