@@ -31,11 +31,48 @@
             font-family: 'Kanit', sans-serif;
             font-size: large;
         }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
+    <script>
+        function toThaiDateString(date) {
+            let monthNames = [
+                "มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน",
+                "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม.",
+                "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"
+            ];
+
+            let year = date.getFullYear() + 543;
+            let month = monthNames[date.getMonth()];
+            let numOfDay = date.getDate();
+
+            let hour = date.getHours().toString().padStart(2, "0");
+            let minutes = date.getMinutes().toString().padStart(2, "0");
+            let second = date.getSeconds().toString().padStart(2, "0");
+
+            return `${numOfDay} ${month} ${year} ` +
+                `${hour}:${minutes}:${second} น.`;
+        }
+        setInterval(UpdateTime, 1000);
+        function UpdateTime() {
+            let now = toThaiDateString(new Date());
+            document.getElementById('currentDateTime').innerHTML = now;
+        }
+    </script>
   </head>
   <body>
     <h1 class="center" id="header">สวัสดีชาวโลก</h1>
     <div class="center"><button type="button" onclick="document.getElementById('header').style.color='red'">เปลี่ยนสี</button></div>
+
+    <h2 class="center" id="currentDateTime">
+        <script>
+            UpdateTime();
+        </script>
+    </h2>
 
     <div class="center">
         <button onclick="document.getElementById('myImage').src='images/Idle.png'">แมวยืน</button>
@@ -43,10 +80,6 @@
         <button onclick="document.getElementById('myImage').src='images/Slide.png'">แมวสไลด์</button>
     </div>
 
-    <p>ทดสอบการพิมพ์ภาษาไทย</p>
-    <div>ทดสอบการสร้างเว็บด้วย HTML</div>
-    <div class="center"><img src="images/dog-puppy.jpg" width="50%" height="50%"></div>
-    <a href="https://www.google.co.th" target="_blank">Google</a>
     <table>
         <tr>
             <td>C1</td>
